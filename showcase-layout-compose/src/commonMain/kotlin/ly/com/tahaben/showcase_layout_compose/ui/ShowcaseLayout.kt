@@ -85,6 +85,7 @@ fun ShowcaseLayout(
     lineThickness: Dp = 5.dp,
     targetShape: TargetShape = TargetShape.RECTANGLE,
     cornerRadius: Dp = 16.dp,
+    clickThrough: Boolean = false,
     content: @Composable ShowcaseScope.() -> Unit
 ) {
     val validatedInitIndex = remember(initIndex, greeting) { validateInitIndex(initIndex, greeting) }

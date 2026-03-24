@@ -16,6 +16,10 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -33,6 +37,7 @@ fun MainScreenCard(
     status: String,
     onClick: () -> Unit
 ) {
+    var counter by remember { mutableIntStateOf(0) }
     val spacing = LocalSpacing.current
     Card(
         modifier = modifier
@@ -42,6 +47,7 @@ fun MainScreenCard(
                 RoundedCornerShape(20)
             )
             .clickable {
+                counter +=1
                 onClick()
             },
         backgroundColor = MaterialTheme.colors.secondary
@@ -63,7 +69,7 @@ fun MainScreenCard(
                         horizontal = if (iconId == null) 15.dp else 8.dp,
                         vertical = 15.dp
                     ),
-                    text = text,
+                    text = text + " $counter",
                     style = MaterialTheme.typography.h4,
                     fontSize = 15.sp,
                     color = Color.Black,

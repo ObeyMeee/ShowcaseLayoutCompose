@@ -89,6 +89,7 @@ fun MainScreen(
     }
 
     ShowcaseLayout(
+        clickThrough = true,
         isShowcasing = isShowcasing,
         onFinish = { isShowcasing = false },
         isDarkLayout = isSystemInDarkTheme(),
@@ -184,6 +185,7 @@ fun MainScreen(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = spacing.spaceLarge)
+
             ) {
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 Text(
@@ -240,49 +242,71 @@ fun MainScreen(
                 ) {
 
                     MainScreenCard(
-                        modifier = Modifier.showcase(
-                            index = 1, message =
-                            ShowcaseMsg(
-                                "Track your phone usage from here",
-                                textStyle = TextStyle(
-                                    color = Color(0xFF827717),
-                                    fontSize = 18.sp
-                                ),
-                                msgBackground = MaterialTheme.colors.primary,
-                                gravity = Gravity.Bottom,
-                                arrow = Arrow(color = MaterialTheme.colors.primary, animSize = false),
-                                enterAnim = MsgAnimation.FadeInOut(),
-                                exitAnim = MsgAnimation.FadeInOut()
+                        modifier = Modifier
+                            .showcase(
+                                index = 1, message =
+                                    ShowcaseMsg(
+                                        "Track your phone usage from here",
+                                        textStyle = TextStyle(
+                                            color = Color(0xFF827717),
+                                            fontSize = 18.sp
+                                        ),
+                                        msgBackground = MaterialTheme.colors.primary,
+                                        gravity = Gravity.Bottom,
+                                        arrow = Arrow(
+                                            color = MaterialTheme.colors.primary,
+                                            animSize = false
+                                        ),
+                                        enterAnim = MsgAnimation.FadeInOut(),
+                                        exitAnim = MsgAnimation.FadeInOut()
+                                    )
                             )
-                        ).showcase(index = 5, message =
-                        ShowcaseMsg(
-                            "From top !",
-                            textStyle = TextStyle(
-                                color = Color(0xFF827717),
-                                fontSize = 18.sp
+                            .showcase(
+                                index = 5, message =
+                                    ShowcaseMsg(
+                                        "From top !",
+                                        textStyle = TextStyle(
+                                            color = Color(0xFF827717),
+                                            fontSize = 18.sp
+                                        ),
+                                        msgBackground = MaterialTheme.colors.primary,
+                                        gravity = Gravity.Top,
+                                        arrow = Arrow(
+                                            color = MaterialTheme.colors.primary,
+                                            targetFrom = Side.Top,
+                                            headSize = 30f,
+                                            head = Head.CIRCLE,
+                                            animSize = true
+                                        ),
+                                        enterAnim = MsgAnimation.FadeInOut(),
+                                        exitAnim = MsgAnimation.FadeInOut()
+                                    )
+                            )
+                            .showcase(
+                                index = 6, message =
+                                    ShowcaseMsg(
+                                        "Right",
+                                        textStyle = TextStyle(
+                                            color = Color(0xFF827717),
+                                            fontSize = 18.sp
+                                        ),
+                                        msgBackground = MaterialTheme.colors.primary,
+                                        gravity = Gravity.Top,
+                                        arrow = Arrow(
+                                            color = MaterialTheme.colors.primary,
+                                            targetFrom = Side.Right,
+                                            headSize = 35f,
+                                            head = Head.ROUND_SQUARE,
+                                            animSize = false
+                                        ),
+                                        enterAnim = MsgAnimation.FadeInOut(),
+                                        exitAnim = MsgAnimation.FadeInOut()
+                                    )
                             ),
-                            msgBackground = MaterialTheme.colors.primary,
-                            gravity = Gravity.Top,
-                            arrow = Arrow(color = MaterialTheme.colors.primary, targetFrom = Side.Top, headSize = 30f, head = Head.CIRCLE, animSize = true),
-                            enterAnim = MsgAnimation.FadeInOut(),
-                            exitAnim = MsgAnimation.FadeInOut()
-                        )).showcase(index =6, message =
-                        ShowcaseMsg(
-                            "Right",
-                            textStyle = TextStyle(
-                                color = Color(0xFF827717),
-                                fontSize = 18.sp
-                            ),
-                            msgBackground = MaterialTheme.colors.primary,
-                            gravity = Gravity.Top,
-                            arrow = Arrow(color = MaterialTheme.colors.primary, targetFrom = Side.Right, headSize = 35f, head = Head.ROUND_SQUARE, animSize = false),
-                            enterAnim = MsgAnimation.FadeInOut(),
-                            exitAnim = MsgAnimation.FadeInOut()
-                        )),
                         text = stringResource(R.string.usage),
                         iconId = R.drawable.ic_usage,
                         status = ""
-                    ) { coroutineScope.launch { showcaseItem(5) } }
+                    ) { coroutineScope.launch { showcaseItem(2) } }
 
                     MainScreenCard(
                         modifier = Modifier,

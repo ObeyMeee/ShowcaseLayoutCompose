@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "ly.com.tahaben.showcaselayoutcompose"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ly.com.tahaben.showcaselayoutcompose"
